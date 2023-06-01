@@ -2,7 +2,7 @@ Automatisation raspberry pi :
 
 1. Création du script que l'on veut exécuter au démarrage + donnée droit d'excution
 
-2.Création d'un fichier de service dans /lib/systemd/system/nomdufichier.service
+2.Création d'un fichier de service dans /lib/systemd/system/nomduscript.service
 Contenu :
 [Service]
 Description=Serveur AirPlay pour Raspberry Pi
@@ -11,3 +11,9 @@ ExecStart=/chemin/absolue/du/script
 
 [Install]
 WantedBy=milti-user.target
+
+3.commande sudo systemctl enable nomduscript.service
+
+4.Lancement du service avec la commande sudo systemctl start nomduscript.service
+
+
