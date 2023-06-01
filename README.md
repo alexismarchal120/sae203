@@ -22,7 +22,7 @@ Architecture du projet:
 - Création de la page web pour l'affichage des relever 
 
 ## objectifs secondaires
- - Création d'un programme python pour export en pdf ou en png les relever
+ - Création d'un programme python pour export en pdf ou en png pour les relevers
 
 ## Matériels utiliser
 - Un raspberry
