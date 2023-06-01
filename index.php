@@ -9,19 +9,19 @@
 
     <?php
     // Connexion à la base de données SQLite
-    $dbname = 'chemin_vers_votre_base_de_données.sqlite';
+    $dbname = 'sae203.db';
     $conn = new SQLite3($dbname);
 
     // Récupération des données depuis la base de données
-    $query = "SELECT * FROM table_donnees";
+    $query = "SELECT * FROM temperature";
     $result = $conn->query($query);
  
     $labels = [];
     $data = [];
 
     while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-        $labels[] = $row['label'];
-        $data[] = $row['valeur'];
+        $labels[] = $row['temp'];
+        $data[] = $row['jour'];
     }
 
     $conn->close();
