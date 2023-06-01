@@ -8,8 +8,6 @@ Architecture du projet:
 
 
 
-## Screenshots
-
 ![App Screenshot](https://github.com/Tutanka01/SAE-23/blob/main/images/architecture.png?raw=true)
 
 
