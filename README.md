@@ -1,18 +1,30 @@
-SAE-23
-SAE203 - Mettre en place une solution informatique pour l’entreprise
 
-Architecture du projet
+# SAE203
 
-image
+SAE203 - Ce projet a pour but de nous initier au système connecter et au MQTT
 
--Lien sympa :
+Architecture du projet:
 
-https://raspberrypi.pagesperso-orange.fr/dossiers/23-08.htm
 
- Dire bonjour et envoyer du json mqtt
 
- Recuperer les donnees et upload sur une BDD
 
-[] Faire un graphique avec les infos avec php
+## Screenshots
 
-[] Possibilite de PDF's
+![App Screenshot](https://github.com/Tutanka01/SAE-23/blob/main/images/architecture.png?raw=true)
+
+
+## objectifs
+
+- Création de notre sonde a température + automatisation
+- Création de notre serveur MQTT via mosquitto
+- Création de la base de donné en sqlite3
+- Création du serveur apache 
+- Création de la page web pour l'affichage des relever 
+
+## objectifs secondaires
+ - Création d'un programme python pour export en pdf ou en png les relever
+
+## Matériels utiliser
+- Un raspberry
+- Un DHT22 comme capteur 
+- Un ordinateur comme serveur 
