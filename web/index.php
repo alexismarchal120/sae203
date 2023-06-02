@@ -1,53 +1,89 @@
-<!DOCTYPE html>
+<?php
+
+$conn= new PDO('sqlite3:/base_de_donnee/sae203.db');
+$results=$conn->query("SELECT * FROM temperature");
+
+$dataPoints = array();
+while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+    $date = str($row['jour']+"/"+$row['mois']+"/"+$row['annee']+" "+$row['heure']+":"+$row['min']+":"+$row['seconde']); // Conversion en millisecondes
+    $temperature = $row['temp'];
+    array_push($dataPoints, array("x" => $date, "y" => $temperature));
+}
+
+//humidite
+
+$results = $conn->query("SELECT * FROM hummydite");
+$dataPoints_humidite = array();
+while ($row = $results->fetchArray(SQLITE3_ASSOC)) {
+	$date = str($row['jour']+"/"+$row['mois']+"/"+$row['annee']+" "+$row['heure']+":"+$row['min']+":"+$row['seconde']); // Conversion en millisecondes
+	$humidite = $row['taux'];
+	array_push($dataPoints_humidite, array("x" => $date, "y" => $humidite));
+}
+
+?>
 <html>
-<head>
-    <title>Affichage des données sous forme de graphique</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<head> 
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+window.onload = function () {
+
+    var chart1 = new CanvasJS.Chart("chartContainer", {
+        theme: "light1", // "light1", "light2", "dark1", "dark2"
+        animationEnabled: true,
+        zoomEnabled: true,
+        title: {
+            text: "Température en fonction de la date"
+        },
+        axisX: {
+            title: "Date",
+            valueFormatString: "YYYY-MM-DD HH:mm:ss"
+        },
+        axisY: {
+            title: "Température"
+        },
+        data: [{
+            type: "area",     
+            dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+        }]
+    });
+    HTML
+
+	var chart3 = new CanvasJS.Chart("chartContainer3", {
+		theme: "light1", // "light1", "light2", "dark1", "dark2"
+		animationEnabled: true,
+		zoomEnabled: true,
+		title: {
+			text: "Humidite en fonction de la date"
+		},
+		axisX: {
+			title: "Date",
+			valueFormatString: "YYYY-MM-DD HH:mm:ss"
+		},
+		axisY: {
+			title: "Humidite"
+		},
+		data: [{
+			type: "area",     
+			dataPoints: <?php echo json_encode($dataPoints_humidite, JSON_NUMERIC_CHECK); ?>
+		}]
+	});
+
+    chart1.render();
+    chart2.render();
+	chart3.render();
+}
+</script>
 </head>
 <body>
-    <canvas id="myChart" width="400" height="400"></canvas>
+<div id="chartContainer" style="width: 45%; height: 300px;display: inline-block;"></div>
 
-    <?php
-    // Connexion à la base de données SQLite
-    $conn = new SQLite3("/base_de_donnee/sae203.db");
+<div id="chartContainer2" style="width: 45%; height: 300px;display: inline-block;"></div>
 
-    // Récupération des données depuis la base de données
-    $query = "SELECT * FROM temperature";
-    $result = $conn->query($query);
- 
-    $labels = [];
-    $data = [];
+<div id="chartContainer3" style="width: 45%; height: 300px;display: inline-block;"></div>
 
-    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-        $labels[] = $row['temp'];
-        $data[] = $row['jour'];
-    }
+<button onclick="window.print()">Imprimer</button> <!-- Bouton d'impression , possibilite 1-->
+<button onclick = "window.location.href='script_pdf.php';"> Imprimer PHP</button>
 
-    $conn->close();
-    ?>
 
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: <?php echo json_encode($labels); ?>,
-                datasets: [{
-                    label: 'Données',
-                    data: <?php echo json_encode($data); ?>,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
 </body>
 </html>
