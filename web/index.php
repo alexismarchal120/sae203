@@ -9,7 +9,7 @@
 
     <?php
     // Connexion à la base de données SQLite
-    $conn = new SQLite3("sae203.db");
+    $conn = new SQLite3("/base_de_donnee/sae203.db");
 
     // Récupération des données depuis la base de données
     $query = "SELECT * FROM temperature";

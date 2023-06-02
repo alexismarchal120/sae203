@@ -15,7 +15,7 @@ def on_message(client, userdata, msg):
     if msg.topic == "topic/json":  # Remplacez par le sujet MQTT approprié
         # Conversion du message MQTT en objet JSON
         data = json.loads(msg.payload)
-        conn = sqlite3.connect('sae203.db')
+        conn = sqlite3.connect('/base_de_donnee/sae203.db')
         cur = conn.cursor()
         t=data['Temperature']
         T=data['Humidity']
