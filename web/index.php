@@ -3,8 +3,10 @@
 <head>
     <title>relever</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/style/styles.css">
 </head>
 <body>
+    <h1><strong>Meteo</strong></h1>
     <canvas id="myChart"></canvas>
     <canvas id="test"></canvas>
     <script>
