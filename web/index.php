@@ -9,6 +9,7 @@
     <canvas id="test"></canvas>
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
+  
 
         <?php
         $db = new SQLite3('../basededonnee/sae203.db');
@@ -16,22 +17,17 @@
         $data = array();
         $labels = array();
 
-        $query1 = $db->query('SELECT * FROM hummydite');
-        $data1 = array();
-        $labels1 = array();
+    
         while ($row = $query->fetchArray(SQLITE3_ASSOC)) {
             $data[] = $row['temp'];
             $labels[] = $row['jour']."/".$row['mois']."/".$row['annee'];
         }
-        while ($row = $query1->fetchArray(SQLITE3_ASSOC)) {
-            $data1[] = $row['taux'];
-            $labels1[] = $row['jour']."/".$row['mois']."/".$row['annee'];
-        }
+    
         ?>
 
         var data = <?php echo json_encode($data); ?>;
         var labels = <?php echo json_encode($labels); ?>;
-
+        
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -39,7 +35,7 @@
                 datasets: [{
                     label: 'température',
                     data: data,
-                    backgroundColor: 'rgba(0, 123, 255, 0.5)'
+                    backgroundColor: 'rgba(0, 123, 255, 1)'
                 }]
             },
             options: {
@@ -58,7 +54,6 @@
         
         
         <?php
-        $db = new SQLite3('../basededonnee/sae203.db');
         $query1 = $db->query('SELECT * FROM hummydite');
         $data1 = array();
         $labels1 = array();
@@ -79,14 +74,15 @@
                 datasets: [{
                     label: 'humidyte',
                     data: data1,
-                    backgroundColor: 'rgba(0, 123, 255, 0.5)'
+                    backgroundColor: 'rgb(255, 0, 0)',
+                    fill:false
                 }]
             },
             options: {
                 responsive: true,
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
                     }
                 }
             }
