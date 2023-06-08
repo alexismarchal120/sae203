@@ -15,7 +15,7 @@ def on_message(client, userdata, msg):
     if msg.topic == "topic/json":  # Remplacez par le sujet MQTT approprié
         # Conversion du message MQTT en objet JSON
         data = json.loads(msg.payload)
-        conn = sqlite3.connect('/basededonnee/sae203.db')
+        conn = sqlite3.connect('/home/marchal/Bureau/sae203/basededonnee/sae203.db')
         cur = conn.cursor()
         t=data['Temperature']
         T=data['Humidity']
@@ -42,7 +42,7 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 # Connexion au broker MQTT
-client.connect("192.168.27.145", 1883, 60)  # Remplacez par l'adresse IP et le port du broker MQTT
+client.connect("192.168.247.145", 1883, 60)  # Remplacez par l'adresse IP et le port du broker MQTT
 
 # Démarrage de la boucle de gestion des messages MQTT
 client.loop_forever()

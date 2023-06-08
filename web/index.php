@@ -22,7 +22,7 @@
     
         while ($row = $query->fetchArray(SQLITE3_ASSOC)) {
             $data[] = $row['temp'];
-            $labels[] = $row['jour']."/".$row['mois']."/".$row['annee'];
+            $labels[] = $row['jour']."/".$row['mois']."/".$row['annee']."\n".$row['heure']."H".$row['min']."m".$row['seconde']."s";
         }
     
         ?>
