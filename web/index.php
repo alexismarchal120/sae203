@@ -3,10 +3,46 @@
 <head>
     <title>relever</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="/style/styles.css">
+
+
 </head>
+<style>
+/* styles.css */
+
+/* Body Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Heading Styles */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 0;
+}
+
+/* Chart Container Styles */
+canvas {
+  display: block;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 40%;
+  height: auto;
+}
+
+
+</style>
 <body>
     <h1><strong>Meteo</strong></h1>
+    <br>
+    <br>
     <canvas id="myChart"></canvas>
     <canvas id="test"></canvas>
     <script>
@@ -90,5 +126,6 @@
             }
         });
     </script>
+    
 </body>
 </html>
