@@ -8,9 +8,9 @@
     <h1 style="text-align: center; color:white;"><strong>Meteo</strong></h1>
     <br>
     <br>
-    <h2 style="color:white;">Température :</h2><br>
+    <h2 style="color:white;">Température :(en °C)</h2><br>
     <canvas id="myChart" style="color:white;"></canvas><br>
-    <h2 style="color:white;">Humidyte :</h2><br>
+    <h2 style="color:white;">Humidyte :(en %)</h2><br>
     <canvas id="test" style="color:white;"></canvas>
     
     <script>
