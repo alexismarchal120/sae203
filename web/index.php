@@ -3,48 +3,16 @@
 <head>
     <title>relever</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
 </head>
-<style>
-/* styles.css */
-
-/* Body Styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  background-color: #f1f1f1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-/* Heading Styles */
-h1 {
-  text-align: center;
-  color: #333;
-  margin-top: 0;
-}
-
-/* Chart Container Styles */
-canvas {
-  display: block;
-  margin: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  max-width: 40%;
-  height: auto;
-}
-
-
-</style>
-<body>
-    <h1><strong>Meteo</strong></h1>
+<body style="background:black;">
+    <h1 style="text-align: center; color:white;"><strong>Meteo</strong></h1>
     <br>
     <br>
-    <canvas id="myChart"></canvas>
-    <canvas id="test"></canvas>
+    <h2 style="color:white;">Température :</h2><br>
+    <canvas id="myChart" style="color:white;"></canvas><br>
+    <h2 style="color:white;">Humidyte :</h2><br>
+    <canvas id="test" style="color:white;"></canvas>
+    
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
   
@@ -73,15 +41,17 @@ canvas {
                 datasets: [{
                     label: 'température',
                     data: data,
-                    backgroundColor: 'rgba(0, 123, 255, 1)'
+                    backgroundColor: 'rgba(0, 123, 255, 1)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 2
                 }]
             },
             options: {
                 responsive: true,
                 scales: {
                     y: {
-                        beginAtZero: true
-                    }
+                        beginAtZero: true,
+                    },
                 }
             }
         });
@@ -98,7 +68,7 @@ canvas {
         
         while ($row = $query1->fetchArray(SQLITE3_ASSOC)) {
             $data1[] = $row['taux'];
-            $labels1[] = $row['jour']."/".$row['mois']."/".$row['annee'];
+            $labels1[] = $row['jour']."/".$row['mois']."/".$row['annee']."\n".$row['heure']."H".$row['min']."m".$row['seconde']."s";;
         }
         ?>
 
@@ -113,6 +83,8 @@ canvas {
                     label: 'humidyte',
                     data: data1,
                     backgroundColor: 'rgb(255, 0, 0)',
+                    borderColor: 'rgb(255,0,0)',
+                    borderWidth: 2,
                     fill:false
                 }]
             },
@@ -126,6 +98,5 @@ canvas {
             }
         });
     </script>
-    
 </body>
 </html>
