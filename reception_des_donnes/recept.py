@@ -42,7 +42,7 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 # Connexion au broker MQTT
-client.connect("192.168.247.145", 1883, 60)  # Remplacez par l'adresse IP et le port du broker MQTT
+client.connect("192.168.31.145", 1883, 60)  # Remplacez par l'adresse IP et le port du broker MQTT
 
 # Démarrage de la boucle de gestion des messages MQTT
 client.loop_forever()

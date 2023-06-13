@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>relever</title>
+    <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body style="background:black;">
