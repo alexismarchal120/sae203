@@ -3,8 +3,10 @@
 
 ## Cablâge 
 ![App Screenshot](https://net-security.fr/images/DHT22/DHT22_2.jpeg)
+
 Avec une sonde nue il faut donc rajouter une résistance et une plaque d'essai pour réaliser un branchement comme celui-là :
 ![App Screenshot](https://net-security.fr/images/DHT22/DHT22_4.jpg)
+
 Le 3ème PIN de la sonde n'est pas utilisé, sinon les autres sont reliés aux mêmes PIN sur le raspberry, l'alimentation, la masse et le PIN 7 pour les données.
 ## Installation des bibliothèque
 Dans un premier dans on va s'assurer que python 3 est bien installer pour ça on faire taper la commande suivante:
